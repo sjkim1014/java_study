@@ -1,0 +1,65 @@
+-------------------------
+**Server의 내부클래스
+-------------------------
+ class Server.ClientManager
+ 	extends Thread
+-------------------------
+ - sock : Socket
+ - clientID : String
+-------------------------
+ <<constructor>>
+ + ClientManager()
+ 
+ + run()
+-------------------------
+
+>> 생성자
+	소켓 저장
+	
+>> run() 메소드
+	1. 소켓 입력스트림 생성
+	
+	2. 메시지 입력받기
+	3. 입력받은 메시지 출력(로그)
+	4. 입력받은 메시지 유형에 따라 처리
+	4-1. 메시지 == null
+		로그아웃
+	4-2. 메시지.contains("_ID_IS_") == true
+		로그인
+	4-3. 4-1,4-2 조건이 아닐 때
+		기본 메시지
+	(2~4 반복)
+	5. writerToClients 맵에서
+		로그아웃한 clientID를 remove()
+	6. 소켓 close()
+	
+
+4-1의 상세한 동작
+	클라이언트가 연결을 끊은 경우이다(EOF)
+	
+	clientID+" 로그아웃" 모니터 출력 (로그)
+	
+	 writerToClients 맵의 자신 제외 모든 출력스트림으로
+	clientID+"님이 채팅방을 나가셨습니다" 출력 (알림)
+
+	반복 중단
+	
+
+4-2의 상세한 동작
+	메시지.split("_ID_IS_") 수행
+	
+	메시지에서 clientID 구해서 저장
+	
+	writerToClients에 {clientID:출력스트림} 형식으로 put
+	
+	clientID+" 로그인" 모니터 출력 (로그)
+	
+	 writerToClients 맵의 자신 제외 모든 출력스트림으로
+	clientID+"님이 채팅방에 입장하셨습니다" 출력 (알림)
+	
+	반복 이어감
+
+
+4-3의 상세한 동작
+	 writerToClients 맵의 자신 제외 모든 출력스트림으로
+	clientID+"> 메시지" 출력 (채팅 전달)

@@ -1,0 +1,25 @@
+-------------------------
+ class Server
+-------------------------
+ - PORT : final int
+ - writerToClients : Map<String, PrintWriter>
+-------------------------
+ + initChatRoom() : void
+ 
+ + main()
+-------------------------
+
+>> main() 메소드
+	Server 객체 생성
+	initChatRoom() 호출
+	
+>> initChatRoom() 메소드
+	1. writerToClients 맵 생성
+	2. 서버리슨 소켓 생성
+	
+	3. 클라이언트 LISTEN 및 통신소켓 생성
+	4. ClientManager 객체 생성
+	5. ClientManager에 통신소켓 전달
+	6. ClientManager 스레드 활성화
+	
+	4~6 반복

@@ -1,0 +1,28 @@
+-------------------------
+ class Client
+-------------------------
+ - HOST : final String
+ - PORT : final int
+ - clientID : String
+-------------------------
+ <<constructor>>
+ + Client()
+
+ + initClient() : void
+ 
+ + chat(Socket) : void
+ 
+ + main()
+-------------------------
+
+>> 생성자
+	객체 생성
+	initClient() 호출
+
+>> initClient() 메소드
+	소켓 생성
+	chat() 호출
+
+>> chat() 메소드
+	Receiver 객체 생성 및 스레드 활성화
+	Sender 객체 생성 및 스레드 활성화

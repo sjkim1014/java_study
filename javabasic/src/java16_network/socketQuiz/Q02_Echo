@@ -1,0 +1,22 @@
+ + 입력한 데이터 반송하기
+  - ECHO 프로그램
+	받은 데이터를 그대로 다시 돌려보내는 프로그램
+	서버가 동작 중인지 확인하는 용도로 많이 사용함
+
+  - EchoClient
+    입력한 데이터를 서버로 전송
+    서버가 반송한 데이터를 모니터 출력
+
+	Scanner입력 -> sock -> PrintWriter
+	sock -> BufferedReader -> System.out 
+
+
+  - EchoServer
+    클라이언트가 전달한 데이터를 다시 돌려보낸다
+
+	sock -> BufferedReader -> sock -> PrintWriter
+
+
+  ** 추가문제
+	클라이언트의 종료는 "/EXIT"를 입력했을 때
+	서버는 종료되지 않고 다음 클라이언트를 LISTEN한다

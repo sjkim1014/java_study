@@ -1,0 +1,29 @@
+ + File전송 프로그램 만들기
+  - FileSenderClient
+    파일을 읽어서 서버로 전송
+
+  - FileRecieverServer
+    전송받은 데이터를 파일로 저장
+
+  - 주어진 data.txt를 활용한다
+
+ + Client의 동작
+	1. 통신용 Socket생성
+	2. FileReader 생성 (data.txt)
+	3. PrintWriter 생성 (Socket 스트림)
+	4. 파일 읽으면서 네트워크로 전송
+	5. close() 적절히 수행
+	
+ + Server의 동작
+	1. 리슨용 ServerSocket생성
+	2. accept()를 통한 통신용 Socket생성
+	3. 원격지(클라이언트) 정보 출력
+		IP정보 : InetAddress
+		Port정보 : Socket
+	4. BufferedReader 생성 (Socket 스트림)
+	5. FileWriter 생성 ( recieve.txt )
+	6. 데이터 전송 받아서 파일로 저장
+	7. close() 적절히
+	8. 2.부터 반복
+
+ 

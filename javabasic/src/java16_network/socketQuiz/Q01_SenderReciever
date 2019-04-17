@@ -1,0 +1,12 @@
+ + 입력한 데이터 전송하기 (단방향)
+
+  - SenderClient
+    키보드로 입력한 내용을 소켓으로 전송
+
+	Scanner입력 -> sock -> PrintWriter 
+
+
+  - RecieverServer
+    소켓으로 받은 내용을 모니터로 출력
+
+	sock -> BufferedReader -> System.out
